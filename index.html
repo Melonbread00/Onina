@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="moon">☾</div>
+                <div>
+                    <h1>Onina</h1>
+                    <span>private diary</span>
+                </div>
+            </div>
+
+            <button class="new-entry" onclick="newEntry()">+ New Entry</button>
+
+            <div class="sidebar-title">Your entries</div>
+            <div id="entryList" class="entry-list"></div>
+
+            <div class="backup-buttons">
+                <button class="backup-btn" onclick="exportBackup()">↓ Export Backup</button>
+                <button class="backup-btn" onclick="document.getElementById('importFile').click()">↑ Merge Backup</button>
+                <input type="file" id="importFile" accept=".json" hidden onchange="importBackup(event)">
+            </div>
+
+            <div class="privacy">🔒 Saved only in this browser</div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">YOUR PRIVATE SPACE</p>
+                    <h2 id="pageTitle">Tonight's thoughts</h2>
+                </div>
+                <button class="save-btn" onclick="saveEntry()">Save Entry</button>
+            </header>
+
+            <section class="editor">
+                <div class="date-row">
+                    <label for="entryDate">Date</label>
+                    <input type="date" id="entryDate">
+                </div>
+
+                <input
+                    type="text"
+                    id="entryTitle"
+                    class="title-input"
+                    placeholder="Give this entry a title..."
+                    maxlength="100"
+                >
+
+                <textarea
+                    id="entryContent"
+                    placeholder="Write whatever is on your mind..."
+                ></textarea>
+
+                <div class="bottom-row">
+                    <span id="wordCount">0 words</span>
+                    <button class="delete-btn" onclick="deleteEntry()">Delete Entry</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
